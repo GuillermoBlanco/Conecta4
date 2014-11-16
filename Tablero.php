@@ -3,7 +3,7 @@
 
 class Tablero {
     
-    private $casillas = array(array());
+    public $casillas = array();
     private $maxX;
     private $maxY;
 
@@ -11,6 +11,9 @@ class Tablero {
     function __construct($n, $m) {
         $this->maxX = $n;
         $this->maxY = $m;
+        for($i=0; $i<$n; $i++){
+            $this->casillas[$i]=array();
+        }
     }
 
     public function getFicha($x,$y) {
@@ -24,27 +27,31 @@ class Tablero {
     public function getMaxY() {
         return $this->maxY;
     }
-
-    public function setMaxX($maxX) {
-        $this->maxX = $maxX;
-    }
-
-    public function setMaxY($maxY) {
-        $this->maxY = $maxY;
-    }
     
     function comprobarConect($x,$y){
         $acumulado=0;
-        $contador=0;
+        $contadorY=0;
+        $contadorX=0;
         
-        //compruebo vertical
+        //Comprobación vertical
         foreach ($this->casillas[$x] as $value) {
             if($value->getColor()==$this->getFicha($x, $y)->getColor()) {
-                $contador++;
-                if ($contador==4) {$acumulado++; break;}
+                $contadorY++;
+                if ($contadorY==4) {$acumulado++; break;}
             }
-            else $contador=0;
+            else $contadorY=0;
         }
+        
+        //Comprobación horizontal
+        for ($i=0; $i<count($this->casillas);$i++) {
+            if( isset($this->casillas[$i][$y]) && ($this->casillas[$i][$y]->getColor()==$this->getFicha($x, $y)->getColor()) ) {
+                $contadorX++;
+                if ($contadorX==4) {$acumulado++; break;}
+            }
+            else $contadorX=0;
+        }
+        
+        return $acumulado>0;
     }
 }
 

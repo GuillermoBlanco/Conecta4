@@ -23,15 +23,28 @@ class Partida {
 
 
     function tirarFicha($col){
-        if ( $this->tablero->getMaxY()>count($this->tablero->getCasillas()[$col]) ){
-            array_push($this->tablero->getCasillas()[$col], $this->ficha[$this->turno]);
-            if ($this->turno==0 ? $this->turno=1 : $this->turno=0);
+        
+        if ( $this->tablero->getMaxY()>count($this->tablero->casillas[$col]) ){
+            array_push($this->tablero->casillas[$col], $this->ficha[$this->turno]);
+//            console.log(print_r($this->tablero->casillas));
+            
+            if(! $this->tablero->comprobarConect($col, count($this->tablero->casillas[$col])-1)){
+                if ($this->turno==0 ? $this->turno=1 : $this->turno=0);
+            }
+            else {
+                //mostrar quién gana la partida
+                
+            }
+
         } else {
             $mensaje="La columna ".$col." está llena";
-            echo "<script type='text/javascript'>alert('$message');</script>";
+            echo "<script type='text/javascript'>alert('$mensaje');</script>";
         }
     }
     
+    function mostrarTablero(){
+        include './plt/tablero.plt.php';
+    }
     
 }
 

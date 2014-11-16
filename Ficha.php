@@ -20,7 +20,10 @@ class Ficha {
     public function setColor($color) {
         $this->color = $color;
     }
-
+    
+    public function mostrarFicha (){
+        include './plt/ficha.plt.php';
+    }
 }
 
 ?>
