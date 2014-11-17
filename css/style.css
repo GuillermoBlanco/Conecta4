@@ -7,7 +7,15 @@ and open the template in the editor.
     Created on : 15-nov-2014, 17:33:06
     Author     : Melliw
 */
+#cabecera{
+    display: block;
+    float: left;
+    margin: 0px 10px 0px 10px;
+}
+
 #tablero{
+    margin: 10px 10px 10px 10px;
+    float: left;
     width: auto;
     height: auto;
     background-image: url(../img/casilla.png);
@@ -33,7 +41,5 @@ and open the template in the editor.
     width: 100px;
     height: 100px;
     border-style: none;
-    border-radius: 50px;
+    border-radius: 50px;    
 }
-
-

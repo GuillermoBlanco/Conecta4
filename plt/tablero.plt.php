@@ -7,7 +7,11 @@
     </head>
 
     <body>
-         <div id='cabecera'></div>
+         <div id='cabecera'>
+             <h1>Conecta 4</h1>
+             <h2>Turno : <?php $this->ficha[$this->getTurno()]->mostrarFicha()?>
+             Ronda : <?php echo $this->ronda; ?></h2>
+         </div>
          <div id='tablero' style='height:<?php echo $this->tablero->getMaxY()*100; ?>px; width:<?php echo $this->tablero->getMaxX()*100; ?>px'>
              <?php for ($i=0; $i<$this->tablero->getMaxX();$i++) {
                     echo "<div id='col".$i."' class='col' style='height:".($this->tablero->getMaxY()*100)."px'>"

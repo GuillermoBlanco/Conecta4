@@ -16,12 +16,19 @@
         }
     }
      else {
+        $gana=false;
         $partida=unserialize($_SESSION['partida']);
         if(isset($_GET['col'])){
-            $partida->tirarFicha($_GET['col']);
+            $gana=$partida->tirarFicha($_GET['col']);
             $_SESSION['partida']=serialize($partida);
         }
         $partida->mostrarTablero();
+        if ($gana){
+            //mostrar quién gana la partida
+            $ganador="El jugador ".($partida->getTurno()+1)." gana la partida.Pulsa para jugar de nuevo";
+            echo "<script type='text/javascript'>alert('$ganador');</script>";
+            session_destroy();
+        }
     }
     
     

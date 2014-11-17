@@ -2,8 +2,8 @@
 <html>
     <head>
          <title>Conecta 4</title>
-             <meta http-equiv='Content-Type' content='text/html' charset='UTF-8'>
-             <link rel='stylesheet' href='css/style.css'>
+            <meta http-equiv='Content-Type' content='text/html' charset='UTF-8'>
+            <style>body {margin: 10px 10ox 10px 10px;}</style>
     </head>
 
     <body>
@@ -11,8 +11,8 @@
 
         <div>
             <form action="index.php" method="get" enctype="text/plain" >
-            <p>Introduce las columnas del tablero: <input style="" type="number" min=1 max=5 name="X"></p>
-            <p>Introduce las filas del tablero: <input style="" type="number" min=1 max=5 name="Y"></p>
+            <p>Introduce las columnas del tablero: <input style="" type="number" min=4 max=10 name="X"></p>
+            <p>Introduce las filas del tablero: <input style="" type="number" min=4 max=8 name="Y"></p>
             <input type="submit" value="enviar">
             </form>
         </div>
