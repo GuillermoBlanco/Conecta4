@@ -32,6 +32,8 @@ class Tablero {
         $acumulado=0;
         $contadorY=0;
         $contadorX=0;
+        $contadorDS=0;
+        $contadorDI=0;
         
         //Comprobación vertical
         foreach ($this->casillas[$x] as $value) {
@@ -51,6 +53,26 @@ class Tablero {
             else $contadorX=0;
         }
         
+        //Comprobación diagonal
+        if($x<=$y){
+            for($a=0, $b=$y-$x; ( $a<count($this->casillas)&&($b<count($this->casillas[$a])) );$a++,$b++){
+                if( isset($this->casillas[$a][$b]) && ($this->casillas[$a][$b]->getColor()==$this->getFicha($x, $y)->getColor()) ) {
+                    $contadorDS++;
+                    if ($contadorDS==4) {$acumulado++; break;}
+                }
+                else $contadorDS=0;
+            }
+        }
+        else {
+            for($a=$x-$y, $b=0; ( $a<count($this->casillas)&&($b<count($this->casillas[$a])) );$a++,$b++){
+                if( isset($this->casillas[$a][$b]) && ($this->casillas[$a][$b]->getColor()==$this->getFicha($x, $y)->getColor()) ) {
+                    $contadorDI++;
+                    if ($contadorDI==4) {$acumulado++; break;}
+                }
+                else $contadorDI=0;
+            }
+        }
+         
         return $acumulado>0;
     }
 }
